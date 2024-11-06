@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-totalFareForStuPath = '/Users/junyeong/DataScienceProject/pythonProject1/.venv/data/totalFareForStudent.csv'
-birthSumPath = '/Users/junyeong/DataScienceProject/pythonProject1/.venv/data/birthSum.csv'
+totalFareForStuPath = 'data/totalFareForStudent.csv'
+birthSumPath = 'data/birthSum.csv'
 
 birthSumDf = pd.read_csv(birthSumPath,index_col='year')
 totalFareForStuPathDf = pd.read_csv(totalFareForStuPath,index_col='year')
@@ -20,6 +20,7 @@ plt.xlabel("Year")
 plt.ylabel("Birth Sum Rate")
 
 plt.tight_layout()
+plt.savefig("birthGraph.png", dpi=300)
 
 plt.show()
 

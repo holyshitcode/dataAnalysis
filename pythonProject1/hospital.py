@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 
 # CSV 파일 경로 가져오기
-file_paths = glob.glob('/Users/junyeong/DataScienceProject/pythonProject1/.venv/data/hospitalInfo/*.csv')
+file_paths = glob.glob('data/hospitalInfo/*.csv')
 
 # 각 연도별 파일 읽기
 hosInfo2021 = pd.read_csv(file_paths[0])
@@ -44,6 +44,8 @@ for ax, year, counts in zip(axes.flatten(), years, data_counts):
 
 plt.suptitle("percent of child hospital")
 plt.tight_layout()
+plt.savefig("hospitalGraph.png", dpi=300)
+
 plt.show()
 
 print(data_counts)

@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-agingPath = '/Users/junyeong/DataScienceProject/pythonProject1/.venv/data/aging.csv'
-birthPath = '/Users/junyeong/DataScienceProject/pythonProject1/.venv/data/birthSum.csv'
+agingPath = 'data/aging.csv'
+birthPath = 'data/birthSum.csv'
 
 agingDf = pd.read_csv(agingPath)
 birthDf = pd.read_csv(birthPath, index_col='year')
@@ -27,4 +27,6 @@ plt.legend()
 
 plt.tight_layout()
 plt.subplots_adjust(wspace=0.3)
+plt.savefig("agingGraph.png", dpi=300)
+
 plt.show()
