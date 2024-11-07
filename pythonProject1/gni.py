@@ -4,11 +4,11 @@ gniPath = 'data/ecoGrowth.csv'
 birthPath = 'data/birthSum.csv'
 
 
-gniDf = pd.read_csv(gniPath)
+gniDf = pd.read_csv(gniPath,index_col=0)
 birthDf = pd.read_csv(birthPath, index_col='year')
 
 plt.subplot(1,2,1)
-plt.plot(gniDf.columns,gniDf.loc[0],label='EcoGrowth')
+plt.plot(gniDf.index, gniDf['gniPerCapital'], label='EcoGrowth', marker='o', color='blue')
 plt.xticks(rotation=45, fontsize=8)
 plt.xlabel('Year', fontsize=8)
 plt.ylabel('EcoGrowth', fontsize=8)
