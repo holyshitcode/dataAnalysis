@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from statsmodels.formula.api import ols
+
 
 totalFareForStuPath = 'data/totalFareForStudent.csv'
 birthSumPath = 'data/birthSum.csv'

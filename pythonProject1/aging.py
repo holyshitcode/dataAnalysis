@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from statsmodels.formula.api import ols
+from sklearn.linear_model import LinearRegression
 
 agingPath = 'data/aging.csv'
 birthPath = 'data/birthSum.csv'
@@ -41,3 +43,22 @@ corrDf = pd.DataFrame(corrData)
 
 corrResult = corrDf.corr(method='pearson')
 print(corrResult)
+
+# 공통 연도 추출
+agingDf['Year'] = agingDf['Year'].astype(str)  # 연도를 문자열로 변환
+common_years = birthDf.columns.intersection(agingDf['Year'])
+print("Common years:", common_years)
+
+# 데이터 서브셋 생성
+birthSubset = birthDf.loc['birthSum', common_years]
+agingSubset = agingDf[agingDf['Year'].isin(common_years)].set_index('Year')['agingIndex']
+
+# 데이터 병합
+sumDf = pd.concat([birthSubset, agingSubset], axis=1).dropna()
+sumDf.columns = ['birthSum', 'agingIndex']
+
+# 병합 결과 확인
+print("Merged DataFrame:\n", sumDf)
+
+fit = ols('birthSum ~ agingIndex', data=sumDf).fit()
+print(fit.summary())
